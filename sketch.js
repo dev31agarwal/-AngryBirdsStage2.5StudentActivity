@@ -36,6 +36,20 @@ function setup(){
 
     bird = new Bird(100,100);
 
+    log6= new Log(100, 100, 100, PI/2)
+
+    var options= {
+        bodyA: log6.body,
+        bodyB: bird.body,
+        length: 100,
+        stiffness: 0.1,
+    }
+    
+    var attachment= Matter.Constraint.create(options); 
+    World.add(world, attachment);
+
+    
+
 }
 
 function draw(){
@@ -54,11 +68,14 @@ function draw(){
     box4.display();
     pig3.display();
     log3.display();
-
+    log6.display();
     box5.display();
     log4.display();
     log5.display();
 
     bird.display();
     platform.display();
+    stroke("brown");
+    strokeWeight(10);
+    line(bird.body.position.x, bird.body.position.y, log6.body.position.x, log6.body.position.y)
 }
